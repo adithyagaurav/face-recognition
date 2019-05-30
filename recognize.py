@@ -5,6 +5,7 @@ import imutils
 import pickle
 import cv2
 import os
+import matplotlib.pyplot as plt
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
@@ -88,6 +89,10 @@ for i in range(0, detections.shape[2]):
 		y = startY-10 if startY - 10 > 10 else startY + 10
 		cv2.rectangle(image, (startX, startY), (endX, endY), (0, 0, 255), 2)
 		cv2.putText(image, text, (startX, y), cv2.FONT_HERSHEY_SIMPLEX, 0.45, (0, 0, 255), 2)
+fig, axs = plt.subplots(1,1, figsize=(15,10))
+fig.tight_layout()
 
+axs[0].imshow(image)
+axs[0].set_title('Image')
 cv2.imshow("Image", image)
 cv2.waitKey(0)
